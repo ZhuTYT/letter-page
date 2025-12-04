@@ -14,7 +14,7 @@
 
         body {
             font-family: "STKaiti", "KaiTi", "SimKai", "Kaiti", sans-serif;
-            background-color: #f5e7b2;
+            background-color: #fefbd7;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -131,14 +131,6 @@
         </div>
     </div>
 
-    <div class="qrcode-modal" id="qrcodeModal">
-        <div class="qrcode-content">
-            <div class="qrcode-title">扫码查看书信</div>
-            <div id="qrcode"></div>
-            <button class="close-btn" id="closeModal">关闭</button>
-        </div>
-    </div>
-
     <script>
         // 等待页面完全加载后执行
         document.addEventListener('DOMContentLoaded', function() {
@@ -148,53 +140,7 @@
             const closeModalBtn = document.getElementById('closeModal');
             const qrcodeContainer = document.getElementById('qrcode');
 
-            // 修复二维码生成逻辑（兼容本地文件/在线地址）
-            generateQrcodeBtn.addEventListener('click', function() {
-                try {
-                    // 清空原有二维码
-                    qrcodeContainer.innerHTML = '';
-                    
-                    // 处理本地文件URL（本地打开时用固定文本，在线部署用当前URL）
-                    let qrContent = window.location.href;
-                    // 本地文件时替换为自定义文本（避免二维码包含file://无效地址）
-                    if (qrContent.startsWith('file://')) {
-                        qrContent = '精美书信：致亲爱的你'; // 可替换为你的自定义文字/在线地址
-                    }
-
-                    // 生成二维码（使用兼容版API）
-                    new QRCode(qrcodeContainer, {
-                        text: qrContent,
-                        width: 200,
-			height:200,
-                        colorDark: '#333333',
-                        colorLight: '#ffffff',
-                        correctLevel: QRCode.CorrectLevel.H // 高容错率
-                    });
-
-                    // 显示弹窗
-                    qrcodeModal.style.display = 'flex';
-                } catch (error) {
-                    alert('二维码生成失败：' + error.message);
-                    console.error('二维码错误详情：', error);
-                }
-            });
-
-            // 关闭弹窗
-            closeModalBtn.addEventListener('click', function() {
-                qrcodeModal.style.display = 'none';
-            });
-
-            qrcodeModal.addEventListener('click', function(e) {
-                if (e.target === qrcodeModal) {
-                    qrcodeModal.style.display = 'none';
-                }
-            });
-
-            // 打印功能
-            printLetterBtn.addEventListener('click', function() {
-                window.print();
-            });
-
+          
             // 渐入动画
             const letterContainer = document.querySelector('.letter-container');
             letterContainer.style.opacity = '0';
