@@ -4,18 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>书信时光</title>
-    <!-- 替换为更稳定的二维码库CDN（备用地址） -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-	    <!-- 字体图标 -->
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
+   <style>
         /* 保留原有样式，无需修改 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: "STKaiti", "KaiTi", "SimKai", "Kaiti", sans-serif;
             background-color: #f5f0e8;
@@ -28,35 +23,6 @@
 	.indent {
 	    text-indent: 2em; /* 使用em单位，1em通常等于当前字体的宽度 */
 	 }
-
-        .btn-container {
-            margin-bottom: 20px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .action-btn {
-            padding: 10px 20px;
-            background-color: #8b5a2b;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-family: inherit;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .action-btn:hover {
-            background-color: #6d4420;
-            transform: translateY(-2px);
-        }
-
         .letter-container {
             position: relative;
             width: 100%;
@@ -87,12 +53,6 @@
             font-size: 18px;
             margin-bottom: 5px;
         }
-
-        .letter-to {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
         .letter-content {
             font-size: 19px;
             line-height: 1.8;
@@ -125,53 +85,7 @@
             margin-top: 10px;
             font-weight: bold;
         }
-
-        .qrcode-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 20px;
-        }
-
-        .qrcode-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .qrcode-title {
-            margin-bottom: 20px;
-            font-size: 20px;
-            color: #333;
-        }
-
-        #qrcode {
-            margin: 0 auto;
-            width: 200px; /* 固定容器宽度 */
-            height: 200px;
-        }
-
-        .close-btn {
-            margin-top: 20px;
-            padding: 8px 20px;
-            background-color: #c0392b;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        @media (max-width: 768px) {
+      @media (max-width: 768px) {
             .letter-container {
                 padding: 30px 20px;
                 transform: rotate(0deg);
@@ -189,19 +103,12 @@
     </style>
 </head>
 <body>
-    <div class="btn-container">
-        <button class="action-btn" id="generateQrcode">
-            <i class="fa fa-qrcode"></i> 生成二维码
-        </button>
-        
-    </div>
-
     <div class="letter-container">
         <div class="letter-header">
-            <div class="letter-date">二〇二五年十一月三十日</div>
+            <div class="letter-date">二〇二五年十一月二十三日</div>
         </div>
         <div class="letter-content">
-          如果现在确定恋爱的关系，也不用担心认识的太短暂，毕竟前面那么多年见了那么多人，就是没有过让我能够像对你一样心动的人。有一段很长的时间你是我的战友，因此我信任你、担心你、羡慕你、珍惜你。<br><br>
+    <p class="indent">如果现在确定恋爱的关系，也不用担心认识的太短暂，毕竟前面那么多年见了那么多人，就是没有过让我能够像对你一样心动的人。有一段很长的时间你是我的战友，因此我信任你、担心你、羡慕你、珍惜你。</p><br>
 	<p class="indent">认识你的第一天结束时我是很开心的，因为我没有想到就是能够碰到你。后来就是其实过了两天搞清楚了我比你小个四岁嘛，你先告诉我你当时就是得到这个信息后，自己最直接的想法是什么？有没有觉得因为这个不能接受还是说构想姐弟恋发展？我最想要的是你这样的本身，是主观的感受而不是客观的分析。可能组里换别人蹭车我仍然会带，但是我会多考虑你一点点、会扯出来那么多话聊天纯粹是因为你。有你参与就是我最喜欢的事，当时我也觉得自己表达过了量，归因给了不断对你心动的上头。</p>
 	<p class="indent">你知道就是我们要上晚上的培训吃晚饭散步那天嘛，就已经是今年最最开心的一段了。我和你在广场上走，交流兴趣爱好和小故事，因为真的就是很融洽，好怀念啊。然后就是你演唱会去不成送你回家，你边打电话给妈妈求安慰边哭边走了以后还要跟我拜拜的时候，那一刹那我真的要被迷死了，也是从那之后我想尽可能多一些把你照顾好。</p><br>
 	<p class="indent">岁数的差距并不能决定什么，就像认识时间的长短，从一见钟情到一个月的迷恋到现在依然不变的感觉，自己的内心最重要。其实你对爱情也是很憧憬的吧，也会觉得是很美好的一件事情。好像感觉我更幸运一些，不用等到了你的年纪再遇见浪漫的真爱。还好你没有着急跟别人在一起了，不然的话……我不行，不允许。而且我也要小心不能被挖墙脚。</p>
@@ -212,79 +119,7 @@
         </div>
     </div>
 
-    <div class="qrcode-modal" id="qrcodeModal">
-        <div class="qrcode-content">
-            <div class="qrcode-title">扫码查看书信</div>
-            <div id="qrcode"></div>
-            <button class="close-btn" id="closeModal">关闭</button>
-        </div>
-    </div>
-
-    <script>
-        // 等待页面完全加载后执行
-        document.addEventListener('DOMContentLoaded', function() {
-            const generateQrcodeBtn = document.getElementById('generateQrcode');
-            const printLetterBtn = document.getElementById('printLetter');
-            const qrcodeModal = document.getElementById('qrcodeModal');
-            const closeModalBtn = document.getElementById('closeModal');
-            const qrcodeContainer = document.getElementById('qrcode');
-
-            // 修复二维码生成逻辑（兼容本地文件/在线地址）
-            generateQrcodeBtn.addEventListener('click', function() {
-                try {
-                    // 清空原有二维码
-                    qrcodeContainer.innerHTML = '';
-                    
-                    // 处理本地文件URL（本地打开时用固定文本，在线部署用当前URL）
-                    let qrContent = window.location.href;
-                    // 本地文件时替换为自定义文本（避免二维码包含file://无效地址）
-                    if (qrContent.startsWith('file://')) {
-                        qrContent = '精美书信：致亲爱的你'; // 可替换为你的自定义文字/在线地址
-                    }
-
-                    // 生成二维码（使用兼容版API）
-                    new QRCode(qrcodeContainer, {
-                        text: qrContent,
-                        width: 200,
-			height:200,
-                        colorDark: '#333333',
-                        colorLight: '#ffffff',
-                        correctLevel: QRCode.CorrectLevel.H // 高容错率
-                    });
-
-                    // 显示弹窗
-                    qrcodeModal.style.display = 'flex';
-                } catch (error) {
-                    alert('二维码生成失败：' + error.message);
-                    console.error('二维码错误详情：', error);
-                }
-            });
-
-            // 关闭弹窗
-            closeModalBtn.addEventListener('click', function() {
-                qrcodeModal.style.display = 'none';
-            });
-
-            qrcodeModal.addEventListener('click', function(e) {
-                if (e.target === qrcodeModal) {
-                    qrcodeModal.style.display = 'none';
-                }
-            });
-
-            // 打印功能
-            printLetterBtn.addEventListener('click', function() {
-                window.print();
-            });
-
-            // 渐入动画
-            const letterContainer = document.querySelector('.letter-container');
-            letterContainer.style.opacity = '0';
-            letterContainer.style.transition = 'opacity 1s ease';
-            setTimeout(() => {
-                letterContainer.style.opacity = '1';
-            }, 300);
-        });
-    </script>
 </body>
+
 
 </html>
