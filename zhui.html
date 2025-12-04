@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>因为你 所以我</title>
+    <style>
+        /* 保留原有样式，无需修改 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "STKaiti", "KaiTi", "SimKai", "Kaiti", sans-serif;
+            background-color:#edf6fd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+	.indent {
+	    text-indent:0em; /* 使用em单位，1em通常等于当前字体的宽度 */
+	 }
+       
+        .letter-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            background-color: #edf6fd;
+            padding: 60px 80px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-image: 
+                linear-gradient(90deg, rgba(200, 180, 150, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(200, 180, 150, 0.1) 1px, transparent 1px);
+            background-size: 20px 25px;
+            transform: rotate(-0.5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .letter-container:hover {
+            transform: rotate(0deg);
+        }
+
+        .letter-header {
+            text-align: right;
+            margin-bottom: 40px;
+            color: #5a3e2b;
+        }
+
+        .letter-date {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .letter-to {
+            font-size: 18px;
+            font-weight: bold;
+			color: #4e729f;
+        }
+
+        .letter-content {
+            font-size: 19px;
+            line-height: 1.8;
+            text-indent: 2em;
+            margin: 20px 0;
+            color: #4e729f;
+        }
+
+        .letter-footer {
+            text-align: right;
+            margin-top: 40px;
+            font-size: 18px;
+            color: #5a3e2b;
+        }
+        .letter-from {
+            margin-bottom: 10px;
+        }
+        .seal {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #c0392b;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 56px;
+            color: #c0392b;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .letter-container {
+                padding: 30px 20px;
+                transform: rotate(0deg);
+            }
+
+            .letter-content {
+                font-size: 17px;
+                line-height: 1.6;
+            }
+
+            .letter-header, .letter-footer {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+       <div class="letter-container">
+        <div class="letter-header">
+            <div class="letter-date">二〇二五年十二月四日</div>
+	    <div class="letter-to">to勇敢追求热爱的你。</div>
+        </div>
+        <div class="letter-content">
+<p class="indent">-------------------============</p>
+爱是抢票成功之后的扣款信息<br>
+是一天天掰手指的倒数日期<br>
+是查那天那座城市的天气<br>
+是心急赶路磕到的膝盖<br>
+是早早计划的行动线<br>
+是终于见面的激动<br>
+是分别时的眼泪<br>
+是最早的票去相见<br>
+是最晚的票仍然不舍<br>
+是独自去他城市的勇气<br>
+是明明已经快触碰到的人<br>
+却又变成手机里的音像视频<br>
+继续期待着下次奔赴见证传奇<br>
+===========--------------------<br>
+        </div>
+        <div class="letter-footer">
+            <div class="seal">wmls</div>
+        </div>
+    </div>
+</body>
+
+
+</html>
