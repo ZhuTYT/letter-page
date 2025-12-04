@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>书信时光</title>
-    <!-- 替换为更稳定的二维码库CDN（备用地址） -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-	    <!-- 字体图标 -->
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         /* 保留原有样式，无需修改 */
         * {
@@ -18,7 +14,7 @@
 
         body {
             font-family: "STKaiti", "KaiTi", "SimKai", "Kaiti", sans-serif;
-            background-color: #f5f0e8;
+            background-color: #ddbbcd;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -35,32 +31,11 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-
-        .action-btn {
-            padding: 10px 20px;
-            background-color: #8b5a2b;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-family: inherit;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .action-btn:hover {
-            background-color: #6d4420;
-            transform: translateY(-2px);
-        }
-
         .letter-container {
             position: relative;
             width: 100%;
             max-width: 800px;
-            background-color: #fffbf0;
+            background-color:#fde8f3;
             padding: 60px 80px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -86,18 +61,12 @@
             font-size: 18px;
             margin-bottom: 5px;
         }
-
-        .letter-to {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
         .letter-content {
             font-size: 19px;
             line-height: 1.8;
             text-indent: 2em;
             margin: 20px 0;
-            color: #333;
+            color: #632145;
         }
 
         .letter-footer {
@@ -188,102 +157,22 @@
     </style>
 </head>
 <body>
-    <div class="btn-container">
-        <button class="action-btn" id="generateQrcode">
-            <i class="fa fa-qrcode"></i> 生成二维码
-        </button>
-        
-    </div>
-
-    <div class="letter-container">
+       <div class="letter-container">
         <div class="letter-header">
-            <div class="letter-date">二〇二五年十一月三十日</div>
+            <div class="letter-date">二〇二五年九月二十日</div>
         </div>
         <div class="letter-content">
          <p class="indent">写信这件事自带很多粉红泡泡的氛围，因为写信的动机念头和执笔落款的这个过程都觉得很浪漫。好吧，开始吧，嗨，你好呀，我亲爱的你现在在哪？为什么还不来找我？生气。不知道你现在在干嘛，是不是也在想用什么样的理由能约出来见面呢？</p>
 <p class="indent">我想我们很快就又见面了。你知道吗？在还未遇见你的日子里，我也会想，等待你来到我身边的日子真的太漫长了，你走到哪去了？我多次幻想过你的样子，阳光的，霸气的，温柔的，感伤的。你出现在我所有需要你的情景里，我想象过无数个与你并肩的场景。晨光中你递来一杯温水，黄昏下你笑着接过我手中的伞。每一个细节都如此真实，仿佛你早已参与我生命的每一场戏。我开始相信，有些相遇是注定的，像春天等来了花，秋天等来了风。而我，只是在等你。</p><br>
 <p class="indent">我好想你，可是我也知道爱情不能用进度条加载，也没有公式代入，我可以慢慢来。你不用着急。在这个爱意泛滥的时代，我确实还真是想慢慢来。母胎单身也不是让人烦恼想要解决掉的事情，反而你说三十岁之前想做什么事都行就很酷。因为我明确知道我要的爱情不是便利店的快餐。我的爱很贵，除了你来，别的谁来都买不走，希望你不要担心。</p>
-<p class="indent">前面的二十几年我都过得很幸福，听说了你精彩的过去，遇见我之前的你也是开心的我就放心了。无论在哪，无论和谁，我只希望你不要伤心难过。不过，偶尔不幸运也没关系，毕竟你的幸运神——我来到你身边了。</p><br><br>
+<p class="indent">前面的二十几年我都过得很幸福，听说了你精彩的过去，遇见我之前的你也是开心的我就放心了。无论在哪，无论和谁，我只希望你不要伤心难过。不过，偶尔不幸运也没关系，毕竟你的幸运神——我来到你身边了。</p><br>
 <p class="indent">然后我想说的别的就不放在信里了，咱们还会一直一直聊到很久很久的以后去呢。</p>
         </div>
         <div class="letter-footer">
             <div class="seal">朱天宇</div>
         </div>
     </div>
-
-    <div class="qrcode-modal" id="qrcodeModal">
-        <div class="qrcode-content">
-            <div class="qrcode-title">扫码查看书信</div>
-            <div id="qrcode"></div>
-            <button class="close-btn" id="closeModal">关闭</button>
-        </div>
-    </div>
-
-    <script>
-        // 等待页面完全加载后执行
-        document.addEventListener('DOMContentLoaded', function() {
-            const generateQrcodeBtn = document.getElementById('generateQrcode');
-            const printLetterBtn = document.getElementById('printLetter');
-            const qrcodeModal = document.getElementById('qrcodeModal');
-            const closeModalBtn = document.getElementById('closeModal');
-            const qrcodeContainer = document.getElementById('qrcode');
-
-            // 修复二维码生成逻辑（兼容本地文件/在线地址）
-            generateQrcodeBtn.addEventListener('click', function() {
-                try {
-                    // 清空原有二维码
-                    qrcodeContainer.innerHTML = '';
-                    
-                    // 处理本地文件URL（本地打开时用固定文本，在线部署用当前URL）
-                    let qrContent = window.location.href;
-                    // 本地文件时替换为自定义文本（避免二维码包含file://无效地址）
-                    if (qrContent.startsWith('file://')) {
-                        qrContent = '精美书信：致亲爱的你'; // 可替换为你的自定义文字/在线地址
-                    }
-
-                    // 生成二维码（使用兼容版API）
-                    new QRCode(qrcodeContainer, {
-                        text: qrContent,
-                        width: 200,
-			height:200,
-                        colorDark: '#333333',
-                        colorLight: '#ffffff',
-                        correctLevel: QRCode.CorrectLevel.H // 高容错率
-                    });
-
-                    // 显示弹窗
-                    qrcodeModal.style.display = 'flex';
-                } catch (error) {
-                    alert('二维码生成失败：' + error.message);
-                    console.error('二维码错误详情：', error);
-                }
-            });
-
-            // 关闭弹窗
-            closeModalBtn.addEventListener('click', function() {
-                qrcodeModal.style.display = 'none';
-            });
-
-            qrcodeModal.addEventListener('click', function(e) {
-                if (e.target === qrcodeModal) {
-                    qrcodeModal.style.display = 'none';
-                }
-            });
-
-            // 打印功能
-            printLetterBtn.addEventListener('click', function() {
-                window.print();
-            });
-
-            // 渐入动画
-            const letterContainer = document.querySelector('.letter-container');
-            letterContainer.style.opacity = '0';
-            letterContainer.style.transition = 'opacity 1s ease';
-            setTimeout(() => {
-                letterContainer.style.opacity = '1';
-            }, 300);
-        });
-    </script>
 </body>
+
 
 </html>
