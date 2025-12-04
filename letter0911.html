@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书信时光</title>
+    <!-- 替换为更稳定的二维码库CDN（备用地址） -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+	    <!-- 字体图标 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* 保留原有样式，无需修改 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "STKaiti", "KaiTi", "SimKai", "Kaiti", sans-serif;
+            background-color: #f5f0e8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+	.indent {
+	    text-indent: 2em; /* 使用em单位，1em通常等于当前字体的宽度 */
+	 }
+        .btn-container {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            background-color: #8b5a2b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background-color: #6d4420;
+            transform: translateY(-2px);
+        }
+
+        .letter-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            background-color: #fffbf0;
+            padding: 60px 80px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-image: 
+                linear-gradient(90deg, rgba(200, 180, 150, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(200, 180, 150, 0.1) 1px, transparent 1px);
+            background-size: 20px 25px;
+            transform: rotate(-0.5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .letter-container:hover {
+            transform: rotate(0deg);
+        }
+
+        .letter-header {
+            text-align: right;
+            margin-bottom: 40px;
+            color: #5a3e2b;
+        }
+
+        .letter-date {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .letter-to {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .letter-content {
+            font-size: 19px;
+            line-height: 1.8;
+            text-indent: 2em;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .letter-footer {
+            text-align: right;
+            margin-top: 40px;
+            font-size: 18px;
+            color: #5a3e2b;
+        }
+
+        .letter-from {
+            margin-bottom: 10px;
+        }
+
+        .seal {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #c0392b;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 56px;
+            color: #c0392b;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .qrcode-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .qrcode-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .qrcode-title {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        #qrcode {
+            margin: 0 auto;
+            width: 200px; /* 固定容器宽度 */
+            height: 200px;
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            padding: 8px 20px;
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .letter-container {
+                padding: 30px 20px;
+                transform: rotate(0deg);
+            }
+
+            .letter-content {
+                font-size: 17px;
+                line-height: 1.6;
+            }
+
+            .letter-header, .letter-footer {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="btn-container">
+        <button class="action-btn" id="generateQrcode">
+            <i class="fa fa-qrcode"></i> 生成二维码
+        </button>
+        
+    </div>
+
+    <div class="letter-container">
+        <div class="letter-header">
+            <div class="letter-date">二〇二五年十一月三十日</div>
+        </div>
+        <div class="letter-content">
+           <p class="indent">不知道这封信是在何时被它的收件人开启，阅读文字的你是会有着何种情绪，这使得我在写信的此刻无法想象。</p><br><br>
+<p class="indent">想听听你会怎么描述；在我看来，一场生命是一条孤独的河流，我觉得只有灵魂相伴才能度过，把最多的时间最真的自己给对方。希望能和你在工作的间隙里讨论今天新发生的故事，在傍晚充满烟火气的街上走走，一起吹着风看着远方发呆，吃吃喝喝或随便打发夜晚时间。平常而普通。但希望的事情是留给未来的，现在的我正享受着当下，也认真地走向未来。所以无论后续如何，你都可以先试着感受，因为一切都如未打开的盒子，无可预料，只要真实地享受彼此的存在，就是最好的我们。对的人灵魂相伴，就能够跨过命运这条孤独的河。</p><br><br>
+        </div>
+        <div class="letter-footer">
+            <div class="seal">朱天宇</div>
+        </div>
+    </div>
+
+    <div class="qrcode-modal" id="qrcodeModal">
+        <div class="qrcode-content">
+            <div class="qrcode-title">扫码查看书信</div>
+            <div id="qrcode"></div>
+            <button class="close-btn" id="closeModal">关闭</button>
+        </div>
+    </div>
+
+    <script>
+        // 等待页面完全加载后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateQrcodeBtn = document.getElementById('generateQrcode');
+            const printLetterBtn = document.getElementById('printLetter');
+            const qrcodeModal = document.getElementById('qrcodeModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            const qrcodeContainer = document.getElementById('qrcode');
+
+            // 修复二维码生成逻辑（兼容本地文件/在线地址）
+            generateQrcodeBtn.addEventListener('click', function() {
+                try {
+                    // 清空原有二维码
+                    qrcodeContainer.innerHTML = '';
+                    
+                    // 处理本地文件URL（本地打开时用固定文本，在线部署用当前URL）
+                    let qrContent = window.location.href;
+                    // 本地文件时替换为自定义文本（避免二维码包含file://无效地址）
+                    if (qrContent.startsWith('file://')) {
+                        qrContent = '精美书信：致亲爱的你'; // 可替换为你的自定义文字/在线地址
+                    }
+
+                    // 生成二维码（使用兼容版API）
+                    new QRCode(qrcodeContainer, {
+                        text: qrContent,
+                        width: 200,
+			height:200,
+                        colorDark: '#333333',
+                        colorLight: '#ffffff',
+                        correctLevel: QRCode.CorrectLevel.H // 高容错率
+                    });
+
+                    // 显示弹窗
+                    qrcodeModal.style.display = 'flex';
+                } catch (error) {
+                    alert('二维码生成失败：' + error.message);
+                    console.error('二维码错误详情：', error);
+                }
+            });
+
+            // 关闭弹窗
+            closeModalBtn.addEventListener('click', function() {
+                qrcodeModal.style.display = 'none';
+            });
+
+            qrcodeModal.addEventListener('click', function(e) {
+                if (e.target === qrcodeModal) {
+                    qrcodeModal.style.display = 'none';
+                }
+            });
+
+            // 打印功能
+            printLetterBtn.addEventListener('click', function() {
+                window.print();
+            });
+
+            // 渐入动画
+            const letterContainer = document.querySelector('.letter-container');
+            letterContainer.style.opacity = '0';
+            letterContainer.style.transition = 'opacity 1s ease';
+            setTimeout(() => {
+                letterContainer.style.opacity = '1';
+            }, 300);
+        });
+    </script>
+</body>
+
+</html>
